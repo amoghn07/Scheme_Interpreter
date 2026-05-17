@@ -177,10 +177,39 @@ def make_let_frame(bindings, env):
     and a Scheme expression."""
     if not scheme_listp(bindings):
         raise SchemeError('bad bindings list in let form')
-    names = vals = nil
-    # BEGIN OPTIONAL PROBLEM 1
-    "*** YOUR CODE HERE ***"
-    # END OPTIONAL PROBLEM 1
+    names = nil
+    value_expressions = nil
+    bindings_list = bindings
+    # Collect the formal names and value expressions separately so we can
+    # validate the names before any expressions.
+    while bindings_list != nil:
+        binding = bindings_list.first
+        validate_form(binding, 2, 2)
+        symbol = binding.first
+        if not scheme_symbolp(symbol):
+            raise SchemeError('non-symbol: {0}'.format(symbol))
+        names = Link(symbol, names)
+        value_expressions = Link(binding.rest.first, value_expressions)
+        bindings_list = bindings_list.rest
+    validate_formals(names)
+
+    def reverse_link(s):
+        # Build new list instead of mutating original bindings.
+        result = nil
+        while s != nil:
+            result = Link(s.first, result)
+            s = s.rest
+        return result
+
+    names = reverse_link(names)
+    value_expressions = reverse_link(value_expressions)
+    vals = nil
+    # Evaluate bound expressions in outer environment and then pair them
+    #with corresponding symbols in child frame.
+    while value_expressions != nil:
+        vals = Link(scheme_eval(value_expressions.first, env), vals)
+        value_expressions = value_expressions.rest
+    vals = reverse_link(vals)
     return env.make_child_frame(names, vals)
 
 

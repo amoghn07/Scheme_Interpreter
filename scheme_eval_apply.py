@@ -6,9 +6,22 @@ from CS078.Scheme_Interpreter.scheme_reader import read_line
 from CS078.Scheme_Interpreter.scheme_builtins import create_global_frame
 from CS078.Scheme_Interpreter.ucb import main, trace
 
-##############
-# Eval/Apply #
-##############
+"""
+scheme_eval_apply.py
+--------------------
+COMSC-078
+Contributors:
+  Thomas: Problem 2
+  Thalia: Problem 3
+  Melika: Problem 6
+  Melika: Problem 9
+  Zeenia: Problem 11
+  Chris: Debug Problem 6: fixed duplicate eval_all definition
+
+Core evaluator and apply logic for the Scheme interpreter.
+Implements recursive eval/apply cycle for expressions, built-in
+procedures, lambda procedures, and dynamically scoped mu procedures.
+"""
 
 
 def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
@@ -69,7 +82,6 @@ def scheme_apply(procedure, args, env):
             raise SchemeError("incorrect number of arguments: {0}".format(procedure))
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
-        "*** YOUR CODE HERE ***"
         # Create a new environment where the lambda was defined
         new_env = procedure.env.make_child_frame(procedure.formals, args)
         # Evaluate the body of the procedure in the new environment
@@ -136,7 +148,6 @@ def optimize_tail_calls(unoptimized_scheme_eval):
 
         result = Unevaluated(expr, env)
         # BEGIN OPTIONAL PROBLEM 2
-        "*** YOUR CODE HERE ***"
         # END OPTIONAL PROBLEM 2
 
     return optimized_eval

@@ -4,6 +4,16 @@
 (define (cdar x) (cdr (car x)))
 (define (cddr x) (cdr (cdr x)))
 
+;;; questions.scm
+;;; COMSC-078
+;;;
+;;; Contributors:
+;;;   Amogh: Problem 15
+;;;   Amogh: Problem 16
+;;;   Chris: Debugging
+;;;
+;;; Scheme procedures implementing enumerate and merge,
+;;; evaluated by the completed Scheme interpreter.
 ;; Problem 14
 ;; Returns a list of two-element lists
 (define (enumerate s)

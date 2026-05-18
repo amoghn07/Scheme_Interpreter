@@ -8,7 +8,6 @@ from CS078.Scheme_Interpreter.ucb import main, trace
 
 """
 scheme_eval_apply.py
---------------------
 COMSC-078
 Contributors:
   Thomas: Problem 2

@@ -49,10 +49,10 @@ def do_define_form(expressions, env):
         # defining a named procedure e.g. (define (f x y) (+ x y))
         # BEGIN PROBLEM 10
         "*** YOUR CODE HERE ***"
-        name = first.first               # the function name (a symbol)
-        formals = first.rest             # the formal parameters
+        name = signature.first               # the function name (a symbol)
+        formals = signature.rest             # the formal parameters
         validate_formals(formals)        # ensure formals are distinct symbols
-        body = rest                      # the body expressions after the signature
+        body = expressions.rest                      # the body expressions after the signature
         procedure = LambdaProcedure(formals, body, env)
         env.define(name, procedure)      # bind the procedure to the name
         return name

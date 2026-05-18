@@ -70,6 +70,10 @@ def scheme_apply(procedure, args, env):
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
         "*** YOUR CODE HERE ***"
+        # Create a new environment where the lambda was defined
+        new_env = procedure.env.make_child_frame(procedure.formals, args)
+        # Evaluate the body of the procedure in the new environment
+        return eval_all(procedure.body, new_env)
         # END PROBLEM 9
     elif isinstance(procedure, MuProcedure):
         # BEGIN PROBLEM 11

@@ -90,9 +90,18 @@ def eval_all(expressions, env):
     2
     """
     # BEGIN PROBLEM 6
-    return scheme_eval(
-        expressions.first, env
-    )  # replace this with lines of your own code
+def eval_all(expressions, env):
+    """Evaluate each expression in the Scheme list EXPRESSIONS in
+    Frame ENV (the current environment) and return the value of the last."""
+    # If there are no expressions, return None (undefined)
+    if expressions is Link.empty:
+        return None
+    # Evaluate expressions sequentially
+    result = None
+    while expressions is not Link.empty:
+        result = scheme_eval(expressions.first, env)
+        expressions = expressions.rest
+    return result
     # END PROBLEM 6
 
 

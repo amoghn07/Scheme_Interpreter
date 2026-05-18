@@ -51,10 +51,19 @@ class Frame:
         >>> env.make_child_frame(formals, expressions)
         <{a: 1, b: 2, c: 3} -> <Global Frame>>
         """
+        child = Frame(self)
+        f = formals
+        v = vals
+        # bind each formal to its corresponding value
+        while f is not Link.empty and v is not Link.empty:
+            child.define(f.first, v.first)
+            f = f.rest
+            v = v.rest
         if len_link(formals) != len_link(vals):
             raise SchemeError('Incorrect number of arguments to function call')
         # BEGIN PROBLEM 8
         "*** YOUR CODE HERE ***"
+        return child
         # END PROBLEM 8
 
 ##############

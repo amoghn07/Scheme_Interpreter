@@ -1,6 +1,17 @@
 
 from link import *
+"""
+scheme_classes.py
+COMSC-078
+Contributors:
+  Thomas: Problem 1
+  Melika: Problem 8
+  Chris: Debugging
 
+Defines the Frame environment class and Procedure subclasses
+(BuiltinProcedure, LambdaProcedure, MuProcedure) used throughout
+the Scheme interpreter.
+"""
 class SchemeError(Exception):
     """Exception indicating an error in a Scheme program."""
 

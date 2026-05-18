@@ -3,6 +3,23 @@ from CS078.Scheme_Interpreter.scheme_utils import *
 from CS078.Scheme_Interpreter.scheme_classes import *
 from CS078.Scheme_Interpreter.scheme_builtins import *
 
+"""
+scheme_forms.py
+COMSC-078
+Contributors:
+  Thalia: Problem 4  
+  Thalia: Problem 5 
+  Melika: Problem 7 
+  Melika: Problem 10
+  Zeenia: Problem 11
+  Zeenia: Problem 12
+  Zeenia: Problem 13 
+  Amogh: Problem 14
+  Chris: Debug Problem 10: fixed incorrect variable names first/rest → signature.first, signature.rest, expressions.rest
+
+Evaluation logic for all Scheme special forms including define,
+quote, lambda, mu, begin, if, and, or, cond, and let.
+"""
 #################
 # Special Forms #
 #################

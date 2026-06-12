@@ -1,5 +1,5 @@
 # Demo dependencies (intentionally pinned behind latest)
-requests==2.28.0
+requests==2.34.2
 flask==2.2.0
 urllib3==1.26.0
 
